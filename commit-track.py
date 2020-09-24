@@ -7,12 +7,8 @@ Example:
     $ python commit-track.py
 """
 import os.path
-from git import Repo
-import sys
-import datetime
-import csv
 import argparse
-from Report import Report
+from Report import CommitReport
 
 def main():
 	
@@ -26,10 +22,9 @@ def main():
 	if os.path.isdir(args.repo) == False:
 		raise Exception("That repository can't be found :( ")
 
-	report = Report()
+	report = CommitReport()
 	report.parse(args.repo, args.name, args.limit)
 	report.save(args.file)
-	sys.exit()
 
 if __name__ == "__main__":
 	main()
